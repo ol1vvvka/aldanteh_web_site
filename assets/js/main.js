@@ -9,19 +9,28 @@
         hasManualTheme = false;
     }
 
-    function updateTheme(theme) {
+    function updateTheme(theme, { animate = false } = {}) {
+        if (animate) {
+            root.classList.add('theme-switching');
+            void root.offsetWidth;
+        }
         root.dataset.theme = theme;
         themeButton?.setAttribute('aria-pressed', String(theme === 'dark'));
         themeButton?.setAttribute('aria-label', theme === 'dark' ? 'Включить светлую тему' : 'Включить тёмную тему');
-        document.querySelector('meta[name="theme-color"]')?.setAttribute('content', theme === 'dark' ? '#141719' : '#f4f4f1');
+        document.querySelector('meta[name="theme-color"]')?.setAttribute('content', theme === 'dark' ? '#101417' : '#eef2f5');
         document.dispatchEvent(new Event('themechange'));
+        if (animate) {
+            requestAnimationFrame(() => {
+                requestAnimationFrame(() => root.classList.remove('theme-switching'));
+            });
+        }
     }
 
     updateTheme(root.dataset.theme || 'light');
     themeButton?.addEventListener('click', () => {
         const theme = root.dataset.theme === 'dark' ? 'light' : 'dark';
         hasManualTheme = true;
-        updateTheme(theme);
+        updateTheme(theme, { animate: true });
         try {
             localStorage.setItem('aldanteh-theme', theme);
         } catch {
@@ -37,24 +46,12 @@
     const projects = menu?.querySelector('.nav-projects');
     const projectsButton = projects?.querySelector('.projects-toggle');
     const projectsMenu = projects?.querySelector('.projects-menu');
-    const hoverNavigation = matchMedia('(min-width: 851px) and (hover: hover)');
-    let projectsCloseTimer;
-
     function setProjectsOpen(open) {
-        clearTimeout(projectsCloseTimer);
         if (!projectsMenu) return;
         projectsMenu.hidden = !open;
         projectsButton.setAttribute('aria-expanded', String(open));
     }
     projectsButton?.addEventListener('click', () => setProjectsOpen(projectsMenu.hidden));
-    projects?.addEventListener('pointerenter', () => {
-        if (hoverNavigation.matches) setProjectsOpen(true);
-    });
-    projects?.addEventListener('pointerleave', () => {
-        if (hoverNavigation.matches && !projects.contains(document.activeElement)) {
-            projectsCloseTimer = setTimeout(() => setProjectsOpen(false), 160);
-        }
-    });
     projects?.addEventListener('focusout', event => {
         if (!projects.contains(event.relatedTarget)) setProjectsOpen(false);
     });
