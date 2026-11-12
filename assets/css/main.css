@@ -133,7 +133,6 @@ p { text-wrap: pretty; }
     position: relative;
     display: flex;
     align-items: center;
-    gap: 8px;
     padding: 12px 0;
     border: 0;
     background: transparent;
@@ -141,23 +140,12 @@ p { text-wrap: pretty; }
     font-size: 14px;
     font-weight: 500;
 }
-.projects-toggle .nav-caret {
-    width: 8px;
-    height: 8px;
-    border-right: 1.5px solid currentColor;
-    border-bottom: 1.5px solid currentColor;
-    transform: rotate(45deg) translateY(-2px);
-    transition: transform .2s var(--ease);
-    flex: 0 0 auto;
-}
-.projects-toggle[aria-expanded="true"] .nav-caret {
-    transform: rotate(225deg) translateY(-2px);
-}
-.projects-toggle.is-current::after {
+.projects-toggle.is-current::after,
+.projects-toggle[aria-expanded="true"]::after {
     content: "";
     position: absolute;
     left: 0;
-    width: calc(100% - 18px);
+    right: 0;
     bottom: 6px;
     height: 1px;
     background: currentColor;
