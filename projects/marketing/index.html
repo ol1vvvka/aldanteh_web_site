@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <base href="../../">
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Управление маркетингом дистрибуции в 1С: бюджеты поставщиков, акции, скидки и бонусы. Возможности модуля и примеры интерфейса.">
+        <meta name="theme-color" content="#eef2f5">
+        <meta property="og:type" content="website">
+        <meta property="og:locale" content="ru_RU">
+        <meta property="og:site_name" content="АЛДАН ТЕХ">
+        <meta property="og:title" content="Маркетинг в 1С — АЛДАН ТЕХ">
+        <meta property="og:description" content="Управление маркетингом дистрибуции в 1С: бюджеты поставщиков, акции, скидки и бонусы. Возможности модуля и примеры интерфейса.">
+        <meta property="og:url" content="https://aldanteh.ru/projects/marketing/">
+        <meta property="og:image" content="https://aldanteh.ru/assets/icons/logo_sm.png">
+        <meta name="twitter:card" content="summary">
+        <meta name="twitter:title" content="Маркетинг в 1С — АЛДАН ТЕХ">
+        <meta name="twitter:description" content="Управление маркетингом дистрибуции в 1С: бюджеты поставщиков, акции, скидки и бонусы. Возможности модуля и примеры интерфейса.">
+        <title>Маркетинг в 1С — АЛДАН ТЕХ</title>
+        <link rel="canonical" href="https://aldanteh.ru/projects/marketing/">
+        <link rel="icon" href="assets/icons/logo_sm.png">
+        <link rel="apple-touch-icon" href="assets/icons/logo_sm.png">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap">
+        <link rel="stylesheet" href="assets/css/components.css">
+        <link rel="stylesheet" href="assets/css/main.css">
+        <link rel="stylesheet" href="assets/css/products.css">
+        <script src="assets/js/theme.js"></script>
+    <script src="assets/js/main.js" defer></script>
+    <script src="assets/js/motion.js" defer></script>
+    <script src="assets/js/image-viewer.js" defer></script>
+    </head>
+    <body>
+        <a class="skip-link" href="#main">К содержанию</a>
+        <header class="site-header">
+            <div class="container header-inner">
+                <a class="brand" href="./" aria-label="Алдан ТЕХ — главная"><img src="assets/images/logo.png" width="32" height="32" alt="">Алдан <strong>ТЕХ</strong></a>
+                <nav class="main-nav" id="main-nav" aria-label="Основная навигация">
+                    <ul>
+                        <li class="nav-projects">
+                            <button type="button" class="projects-toggle is-current" aria-expanded="false" aria-controls="projects-menu">Проекты</button>
+                            <ul class="projects-menu" id="projects-menu" hidden><li><a href="projects/smagent/">SmAgent</a></li><li><a href="projects/marketing/" aria-current="page">Маркетинг в 1С</a></li></ul>
+                        </li>
+                        <li>
+                            <a href="expertise/">Экспертиза</a>
+                        </li>
+                        <li>
+                            <a href="services/">Услуги</a>
+                        </li>
+                        <li>
+                            <a href="about/">О компании</a>
+                        </li>
+                    <li><a href="contacts/">Контакты</a></li>
+                    </ul>
+                </nav>
+                <div class="header-actions">
+                    <button class="theme-toggle" type="button" aria-label="Включить тёмную тему" aria-pressed="false"><span class="theme-icon" aria-hidden="true">◐</span></button>
+                <a class="header-contact" href="./#contact">На связи</a>
+                <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav" aria-label="Открыть меню"><span></span><span></span></button>
+                </div>
+            </div>
+        </header>
+        <main id="main" class="product-page container">
+            <section class="page-hero product-hero">
+                <nav class="breadcrumb" aria-label="Хлебные крошки"><a href="./">Главная</a><span aria-hidden="true">/</span><a href="projects/">Проекты</a><span aria-hidden="true">/</span><span>Маркетинг в 1С</span></nav>
+                <p class="eyebrow">{ Расширение для 1С:Управление торговлей }</p>
+                <h1>Маркетинг в 1С<span class="accent">.</span></h1>
+                <p class="product-lead">Бюджет поставщика.<br>Акции для покупателей. Контроль в одной системе.</p>
+                <p class="product-intro">Модуль помогает управлять маркетинговым бюджетом на всей цепочке дистрибуции — от поставщика до конечного покупателя. Поставляется как расширение конфигурации «1С:Управление торговлей».</p>
+                <div class="product-hero-actions"><span>Бюджеты · Скидки · Бонусы · Отчётность</span><a class="button button-primary" href="./#contact">Обсудить модуль</a></div>
+            </section>
+            <nav class="product-nav" aria-label="На странице маркетинга в 1С"><a href="#budgets">Бюджеты</a><a href="#suppliers">Поставщики</a><a href="#promotions">Акции и бонусы</a><a href="#implementation">Внедрение</a></nav>
+            <section class="product-section" id="budgets" aria-labelledby="budgets-title">
+                <div class="product-feature-heading"><div><p class="eyebrow">{ 01 / Бюджеты }</p><h2 id="budgets-title">Откуда бюджет.<br>На что он направлен.</h2></div><div><p>Учитывайте маркетинговые бюджеты по поставщикам и периодам. Модуль связывает их с операциями поступления и реализации товаров и услуг.</p><p>В документе бюджета подразделения задаются центр затрат, отдел, период и статьи бюджета. Это позволяет рассматривать расходы в нужном разрезе.</p></div></div>
+                <figure class="product-screenshot"><a href="assets/images/projects/111.png" data-image-preview aria-label="Документ бюджета подразделения в 1С — открыть крупнее"><img src="assets/images/projects/111.png" width="1740" height="415" alt="Документ бюджета подразделения в 1С" loading="lazy" decoding="async"></a><figcaption><span>Бюджет подразделения: период, центр затрат и статьи бюджета.</span><a href="assets/images/projects/111.png" data-image-preview>Открыть крупнее</a></figcaption></figure>
+            </section>
+            <section class="product-section" id="suppliers" aria-labelledby="suppliers-title">
+                <div class="product-feature-heading"><div><p class="eyebrow">{ 02 / Поставщики }</p><h2 id="suppliers-title">План и факт<br>по договорённостям.</h2></div><div><p>Модуль автоматизирует транзит маркетингового бюджета поставщиков по периодам, ассортименту и выделенным командам.</p><p>План-расчёт по бонусам собирает маркетинговые соглашения с поставщиками и показывает плановые и фактические показатели по условиям.</p></div></div>
+                <figure class="product-screenshot"><a href="assets/images/projects/444.png" data-image-preview aria-label="План-расчёт по бонусам поставщиков в 1С — открыть крупнее"><img src="assets/images/projects/444.png" width="1740" height="695" alt="План-расчёт по бонусам поставщиков в 1С" loading="lazy" decoding="async"></a><figcaption><span>План-расчёт по бонусам поставщиков и маркетинговым соглашениям.</span><a href="assets/images/projects/444.png" data-image-preview>Открыть крупнее</a></figcaption></figure>
+            </section>
+            <section class="product-section" id="promotions" aria-labelledby="promotions-title">
+                <div class="product-feature-heading"><div><p class="eyebrow">{ 03 / Акции и бонусы }</p><h2 id="promotions-title">Условия заданы.<br>Скидки применяются.</h2></div><div><p>Настройте период действия и условия акции. Скидки применяются автоматически в зависимости от типа покупателя, а при соответствующей настройке бонусы формируются при оформлении заказов.</p><p>В системе предусмотрены акции «1+1», ценовые скидки и пакетные предложения. Набор акций можно расширить под ваши правила.</p></div></div>
+                <figure class="product-screenshot"><a href="assets/images/projects/555.png" data-image-preview aria-label="Настройка условий и бонусов маркетинговой акции в 1С — открыть крупнее"><img src="assets/images/projects/555.png" width="1721" height="669" alt="Настройка условий и бонусов маркетинговой акции в 1С" loading="lazy" decoding="async"></a><figcaption><span>Карточка акции: сроки, участники, условия и бонусы.</span><a href="assets/images/projects/555.png" data-image-preview>Открыть крупнее</a></figcaption></figure>
+            </section>
+            <section class="product-section product-reporting" aria-labelledby="reporting-title"><p class="eyebrow">{ Отчётность }</p><h2 id="reporting-title">От операции — к результату.</h2><p>Данные о бюджетах, акциях и бонусах используются для управленческого и регламентированного учёта. Модуль формирует отчёты, чтобы анализировать маркетинговую работу в рамках учётной системы.</p></section>
+            <section class="product-section product-implementation" id="implementation" aria-labelledby="implementation-title">
+                <p class="eyebrow">{ Следующий шаг }</p><h2 id="implementation-title">Обсудим ваши правила маркетинга.</h2><p>Для оценки внедрения разберём текущую конфигурацию и то, как вы планируете и используете бюджеты поставщиков.</p>
+                <ul class="product-checklist"><li>Версия «1С:Управление торговлей» и существующие доработки.</li><li>Поставщики, периоды планирования и ответственные команды.</li><li>Правила скидок, пакетных акций и начисления бонусов.</li><li>Нужные разрезы учёта и формы отчётности.</li></ul>
+                <div class="product-bottom"><a class="text-link" href="projects/smagent/">Также: мобильная торговля SmAgent</a><a class="button button-primary" href="./#contact">Обсудить внедрение</a></div>
+            </section>
+        </main>
+        <footer class="site-footer container">
+    <div class="footer-layout">
+        <div class="footer-identity">
+            <a class="brand" href="./" aria-label="Алдан ТЕХ — главная"><img src="assets/images/logo.png" width="28" height="28" alt="">Алдан <strong>ТЕХ</strong></a>
+            <p class="footer-requisites">ИНН 6670527844 · КПП 667001001<br>ОГРН 1256600003032</p>
+            <small>© <span data-year>2026</span></small>
+        </div>
+        <address class="footer-address"><span class="eyebrow">Офис</span>620078, Екатеринбург<br>ул. Библиотечная, д. 50, офис 218</address>
+        <div class="footer-links"><a href="mailto:info@aldanteh.ru">info@aldanteh.ru</a><a href="tel:+73433761555">+7 (343) 376-15-55, доб. 670</a><a href="contacts/#requisites">Контакты и реквизиты</a><a class="footer-up" href="#main">Наверх</a></div>
+    </div>
+</footer>
+    </body>
+</html>

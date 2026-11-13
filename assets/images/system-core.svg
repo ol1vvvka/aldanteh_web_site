@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" fill="none">
+  <style>
+    .fluid-core { transform-origin: 300px 290px; animation: flow 14s ease-in-out infinite; }
+    @keyframes flow { 0%,100% { transform: rotate(-10deg) scale(.97,1.03); }50% { transform: rotate(16deg) scale(1.03,.97); } }
+    @media (prefers-reduced-motion:reduce) { .fluid-core { animation:none; } }
+  </style>
+  <defs>
+    <radialGradient id="glass" cx=".28" cy=".18" r=".88">
+      <stop stop-color="#fff" stop-opacity=".9"/>
+      <stop offset=".36" stop-color="#e2edf3" stop-opacity=".08"/>
+      <stop offset=".76" stop-color="#98b9ce" stop-opacity=".18"/>
+      <stop offset=".94" stop-color="#ecf9ff" stop-opacity=".7"/>
+      <stop offset="1" stop-color="#7394ad" stop-opacity=".28"/>
+    </radialGradient>
+    <linearGradient id="blue" x1="150" y1="130" x2="440" y2="460" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#b7eaff"/>
+      <stop offset=".27" stop-color="#39b2ff"/>
+      <stop offset=".5" stop-color="#047bdc"/>
+      <stop offset=".83" stop-color="#06538e"/>
+      <stop offset="1" stop-color="#002e5b"/>
+    </linearGradient>
+    <linearGradient id="edge" x1="200" y1="110" x2="440" y2="430" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#f1fdff"/>
+      <stop offset=".4" stop-color="#60c9ff"/>
+      <stop offset="1" stop-color="#047bdc" stop-opacity=".2"/>
+    </linearGradient>
+    <linearGradient id="inner" x1="250" y1="230" x2="390" y2="370" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#00356a"/>
+      <stop offset=".6" stop-color="#047bdc"/>
+      <stop offset="1" stop-color="#72d8ff"/>
+    </linearGradient>
+    <linearGradient id="reflection" x1="100" y1="90" x2="400" y2="440" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#fff" stop-opacity=".9"/>
+      <stop offset=".55" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="shadow" x="0" y="0" width="600" height="600" filterUnits="userSpaceOnUse">
+      <feGaussianBlur stdDeviation="12"/>
+    </filter>
+    <clipPath id="sphere"><circle cx="300" cy="290" r="245"/></clipPath>
+  </defs>
+  <ellipse cx="314" cy="543" rx="120" ry="12" fill="#0b4267" opacity=".12" filter="url(#shadow)"/>
+  <circle cx="300" cy="290" r="245" fill="url(#glass)" stroke="#a2c1d5" stroke-opacity=".3"/>
+  <g clip-path="url(#sphere)">
+    <g class="fluid-core">
+    <path d="M157 282C115 220 140 139 215 119C302 96 327 172 389 194C452 216 501 267 476 335C454 398 397 380 365 420C331 462 252 493 200 450C141 400 199 344 157 282Z" fill="url(#blue)"/>
+    <path d="M215 119C302 96 327 172 389 194C432 209 465 231 477 269C450 238 414 245 382 233C315 208 291 141 228 145C180 148 152 178 147 215C141 172 165 133 215 119Z" fill="url(#edge)"/>
+    <path d="M226 239C253 205 293 216 323 244C350 270 394 256 409 286C430 328 378 338 350 360C318 386 312 418 277 420C237 423 216 394 228 361C243 319 192 280 226 239Z" fill="url(#inner)"/>
+    <path d="M233 244C258 220 286 228 310 250C344 280 375 266 397 286C365 275 345 298 320 288C284 274 271 245 233 244Z" fill="#003e76" opacity=".6"/>
+    <path d="M176 330C186 367 165 412 207 446C246 477 304 465 339 439C305 451 260 443 242 417C218 382 230 360 208 328C198 311 179 301 166 293C170 306 172 318 176 330Z" fill="url(#edge)" opacity=".85"/>
+    <path d="M165 199C181 163 215 145 245 151" stroke="#e5faff" stroke-opacity=".9" stroke-width="2" stroke-linecap="round"/>
+    <path d="M422 255C452 268 463 296 449 319" stroke="#91ddff" stroke-opacity=".7" stroke-width="2" stroke-linecap="round"/>
+    </g>
+    <ellipse cx="192" cy="138" rx="137" ry="45" transform="rotate(-36 192 138)" fill="url(#reflection)" opacity=".4"/>
+  </g>
+  <path d="M92 233C111 126 208 53 305 52" stroke="#fff" stroke-opacity=".8" stroke-width="3" stroke-linecap="round"/>
+  <path d="M494 375C469 448 401 501 330 520" stroke="#bcd6e6" stroke-opacity=".5" stroke-width="1.5" stroke-linecap="round"/>
+</svg>

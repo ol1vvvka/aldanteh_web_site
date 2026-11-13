@@ -1,0 +1,7 @@
+# NetAngels / Apache: directory URLs with trailing slash
+DirectorySlash On
+
+# If a directory is requested without a trailing slash, redirect to the slash form
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^(.+[^/])$ $1/ [R=301,L]
