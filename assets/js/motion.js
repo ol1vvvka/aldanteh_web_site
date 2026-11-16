@@ -69,6 +69,29 @@
         scheduleReading();
     }
 
+    const processSteps = [...document.querySelectorAll('.home-page .process-list article')];
+    if (processSteps.length) {
+        let stepFrame = 0;
+        function highlightStep() {
+            stepFrame = 0;
+            const target = innerHeight * .48;
+            let nearest = processSteps[0];
+            let distance = Infinity;
+            processSteps.forEach(step => {
+                const bounds = step.getBoundingClientRect();
+                const nextDistance = Math.abs(bounds.top + bounds.height / 2 - target);
+                if (nextDistance < distance) { nearest = step; distance = nextDistance; }
+            });
+            processSteps.forEach(step => step.classList.toggle('is-current', step === nearest));
+        }
+        const scheduleStep = () => {
+            if (!stepFrame) stepFrame = requestAnimationFrame(highlightStep);
+        };
+        addEventListener('scroll', scheduleStep, { passive: true });
+        addEventListener('resize', scheduleStep);
+        highlightStep();
+    }
+
     const symbols = '01<>/{}_+';
     const stopScrambles = new Set();
     const headingObserver = 'IntersectionObserver' in window ? new IntersectionObserver(entries => {

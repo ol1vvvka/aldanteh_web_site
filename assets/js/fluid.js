@@ -37,7 +37,8 @@
             vec3 color = mix(deep, blue, luminous);
             color = mix(color, cyan, overlap * 0.40);
             float density = 0.48 + luminous * 0.17;
-            gl_FragColor = vec4(color, cloud * density);
+            float boundaryFade = 1.0 - smoothstep(0.55, 0.82, length(uv));
+            gl_FragColor = vec4(color, cloud * density * boundaryFade);
         }
     `;
 
