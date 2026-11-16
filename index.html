@@ -24,13 +24,14 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap">
-        <link rel="stylesheet" href="assets/css/components.css">
-        <link rel="stylesheet" href="assets/css/main.css">
+        <link rel="stylesheet" href="assets/css/components.css?v=20261116-smaily-fit">
+        <link rel="stylesheet" href="assets/css/main.css?v=20261116-smaily-fit">
         <script src="assets/js/theme.js"></script>
         <script src="assets/js/main.js" defer></script>
         <script src="assets/js/motion.js" defer></script>
         <script src="assets/js/fluid.js" defer></script>
         <script src="assets/js/contact-map.js" defer></script>
+        <script src="assets/js/testimonials.js?v=3" defer></script>
         <script type="application/ld+json">
             {
                 "@context": "https://schema.org",
@@ -50,26 +51,26 @@
             }
         </script>
     </head>
-    <body>
-        <a class="skip-link" href="#main">К содержанию</a>
+    <body class="home-page">
+        <a class="skip-link" href="index.html#main">К содержанию</a>
         <header class="site-header">
             <div class="container header-inner">
-                <a class="brand" href="./" aria-label="Алдан ТЕХ — главная"><img src="assets/images/logo.png" width="32" height="32" alt="">Алдан <strong>ТЕХ</strong></a>
+                <a class="brand" href="index.html" aria-label="Алдан ТЕХ — главная"><img src="assets/images/logo.png" width="32" height="32" alt="">Алдан <strong>ТЕХ</strong></a>
                 <nav class="main-nav" id="main-nav" aria-label="Основная навигация">
                     <ul>
                         <li class="nav-projects">
                             <button type="button" class="projects-toggle" aria-expanded="false" aria-controls="projects-menu">Проекты</button>
-                            <ul class="projects-menu" id="projects-menu" hidden><li><a href="projects/smagent/">SmAgent</a></li><li><a href="projects/marketing/">Маркетинг в 1С</a></li></ul>
+                            <ul class="projects-menu" id="projects-menu" hidden><li><a href="projects/smagent/index.html">SmAgent</a></li><li><a href="projects/marketing/index.html">Маркетинг в 1С</a></li></ul>
                         </li>
-                        <li><a href="expertise/">Экспертиза</a></li>
-                        <li><a href="services/">Услуги</a></li>
-                        <li><a href="about/">О компании</a></li>
-                        <li><a href="contacts/">Контакты</a></li>
+                        <li><a href="expertise/index.html">Экспертиза</a></li>
+                        <li><a href="services/index.html">Услуги</a></li>
+                        <li><a href="about/index.html">О компании</a></li>
+                        <li><a href="contacts/index.html">Контакты</a></li>
                     </ul>
                 </nav>
                 <div class="header-actions">
                     <button class="theme-toggle" type="button" aria-label="Включить тёмную тему" aria-pressed="false"><span class="theme-icon" aria-hidden="true">◐</span></button>
-                    <a class="header-contact" href="#contact">На связи</a>
+                    <a class="header-contact" href="index.html#contact">На связи</a>
                     <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav" aria-label="Открыть меню"><span></span><span></span></button>
                 </div>
             </div>
@@ -78,36 +79,39 @@
             <section class="hero container" aria-labelledby="hero-title">
                 <div class="hero-grid">
                     <div class="hero-copy" data-enter>
-                        <p class="brand-mark">АЛДАН ТЕХ</p>
+                        <p class="brand-mark">{ 1С · Мобильные приложения · Интеграции }</p>
                         <h1 id="hero-title">Ваш бизнес.<br>В единой<br><span class="hero-last">системе<span class="accent">.</span></span></h1>
                         <p class="hero-description">Связываем 1С, мобильные приложения и процессы — чтобы технологии помогали работать, а не добавляли задач.</p>
                         <div class="hero-actions">
-                            <a class="button button-primary" href="#contact">Обсудить проект</a>
-                            <a class="text-link hero-secondary" href="services/">Смотреть услуги</a>
+                            <a class="button button-primary" href="index.html#contact">Обсудить проект</a>
+                            <a class="text-link hero-secondary" href="services/index.html">Смотреть услуги</a>
                         </div>
                     </div>
-                    <div class="hero-art" aria-hidden="true" data-tilt data-parallax="0.065">
-                        <div class="core-orbit"></div>
-                        <div class="core-object"><img src="assets/images/system-core.svg" width="600" height="600" alt="" fetchpriority="high"></div>
-                        <span class="core-note core-note-one"><span>{ 01 }</span> Бизнес-процессы</span>
-                        <span class="core-note core-note-two"><span>{ 02 }</span> Разработка</span>
-                        <span class="core-note core-note-three"><span>{ 03 }</span> Интеграция</span>
+                    <div class="hero-art" data-tilt data-parallax="0.065">
+                        <div class="core-object" aria-hidden="true"><img src="assets/images/system-core.svg" width="600" height="600" alt=""></div>
+                        <img class="hero-devices" src="assets/images/hero-devices.png" width="1024" height="682" alt="Монитор с кодом, ноутбук и смартфон с маршрутом" fetchpriority="high">
                     </div>
                 </div>
+                <ul class="offer-rail" aria-label="Ключевые условия">
+                    <li><strong>1С</strong> от 3 600 ₽/час</li>
+                    <li><strong>Мобильные</strong> iOS и Android</li>
+                    <li><strong>Маркировка</strong> Честный знак и Меркурий</li>
+                    <li><strong>Оценка</strong> до начала работ</li>
+                </ul>
             </section>
 
             <section class="intro section container" id="company" aria-labelledby="intro-title">
-                <p class="eyebrow section-label">О нас</p>
-                <div>
-                    <h2 id="intro-title" class="intro-statement" data-reading>Бизнес меняется. Системы должны успевать за ним.</h2>
+                <div class="intro-copy">
+                    <p class="eyebrow section-label">О нас</p>
+                    <h2 id="intro-title" class="intro-statement" data-reading>Разбираемся в процессах. Связываем системы.</h2>
                     <div class="intro-bottom">
-                        <p>Мы — команда ИТ-специалистов «АЛДАН ТЕХ». Разбираемся в ваших процессах, находим узкие места и превращаем задачи в работающие инструменты.</p>
-                        <p>От доработки отчёта в 1С до мобильного приложения. Связываем отдельные решения в единую систему и остаёмся рядом после запуска.</p>
+                        <p>АЛДАН ТЕХ — команда разработки из Екатеринбурга. Помогаем торговым и производственным компаниям автоматизировать ежедневную работу.</p>
+                        <p>Дорабатываем 1С, создаём мобильные приложения и настраиваем обмен данными. Начинаем с конкретной задачи и учитываем системы, которые у вас уже работают.</p>
                     </div>
                     <p class="intro-industries">Работаем с торговлей и FMCG, пищевым производством, складом и логистикой.</p>
                     <div class="intro-links">
-                        <a class="text-link" href="about/">Познакомиться с командой</a>
-                        <a class="text-link" href="expertise/">Отрасли и экспертиза</a>
+                        <a class="text-link" href="about/index.html">Познакомиться с командой</a>
+                        <a class="text-link" href="expertise/index.html">Отрасли и экспертиза</a>
                     </div>
                 </div>
             </section>
@@ -118,49 +122,70 @@
                         <p class="eyebrow">Направления</p>
                         <h2 id="services-title">Что будем<br><span class="muted">делать вместе?</span></h2>
                     </div>
-                    <a class="text-link" href="services/#pricing">Услуги и стоимость</a>
+                    <a class="text-link" href="services/index.html#pricing">Услуги и стоимость</a>
                 </div>
-                <div class="service-list">
-                    <details class="service-item" open>
-                        <summary><span class="service-number">/01</span><h3>Разработка на 1С</h3><span class="service-toggle" aria-hidden="true">+</span></summary>
-                        <div class="service-body">
-                            <p>Отчёты, расширения, обмены и интеграции. Настраиваем систему под ваши процессы — от отдельной доработки до внедрения модулей.</p>
-                            <div>
+                <div class="service-stage">
+                    <div class="service-picker" role="tablist" aria-label="Направления работы">
+                        <span class="tab-indicator" aria-hidden="true"></span>
+                        <button class="service-tab" id="tab-1c" type="button" role="tab" aria-selected="true" aria-controls="pane-1c">Разработка на 1С</button>
+                        <button class="service-tab" id="tab-mobile" type="button" role="tab" aria-selected="false" aria-controls="pane-mobile" tabindex="-1">Мобильные приложения</button>
+                        <button class="service-tab" id="tab-marking" type="button" role="tab" aria-selected="false" aria-controls="pane-marking" tabindex="-1">Маркировка и учёт</button>
+                        <button class="service-tab" id="tab-support" type="button" role="tab" aria-selected="false" aria-controls="pane-support" tabindex="-1">Поддержка и развитие</button>
+                    </div>
+                    <div class="service-panes">
+                        <article class="service-pane is-active" id="pane-1c" role="tabpanel" aria-labelledby="tab-1c">
+                            <div class="service-copy">
+                                <p class="service-number">/01</p>
+                                <h3>Разработка на 1С</h3>
+                                <p>Отчёты, расширения, обмены и интеграции. Настраиваем систему под ваши процессы — от отдельной доработки до внедрения модулей.</p>
                                 <span class="service-meta">1С:Предприятие / ERP / УТ / БП</span>
-                                <a class="text-link" href="services/1c/">Подробнее о направлении</a>
+                                <div class="service-price"><strong>От 3 600 ₽ / час</strong><span>Оценка объёма до начала разработки</span></div>
+                                <a class="text-link" href="services/1c/index.html">Подробнее о направлении</a>
                             </div>
-                        </div>
-                    </details>
-                    <details class="service-item">
-                        <summary><span class="service-number">/02</span><h3>Мобильные приложения</h3><span class="service-toggle" aria-hidden="true">+</span></summary>
-                        <div class="service-body">
-                            <p>Рабочие инструменты для торговых представителей, мерчандайзеров и сотрудников на местах. Данные под рукой, даже когда работа далеко от офиса.</p>
-                            <div>
+                            <figure class="service-visual">
+                                <img src="assets/images/services/1c-development.png" width="1536" height="1024" loading="lazy" decoding="async" alt="Разработка в конфигураторе 1С: дерево объектов и программный модуль">
+                            </figure>
+                        </article>
+                        <article class="service-pane" id="pane-mobile" role="tabpanel" aria-labelledby="tab-mobile">
+                            <div class="service-copy">
+                                <p class="service-number">/02</p>
+                                <h3>Мобильные приложения</h3>
+                                <p>Рабочие инструменты для торговых представителей, мерчандайзеров и сотрудников на местах. Данные под рукой, даже когда работа далеко от офиса.</p>
                                 <span class="service-meta">iOS / Android / интеграция с 1С</span>
-                                <a class="text-link" href="services/mobile/">Подробнее о направлении</a>
+                                <div class="service-price"><strong>Индивидуальная оценка</strong><span>По сценариям, платформам и интеграциям</span></div>
+                                <a class="text-link" href="services/mobile/index.html">Подробнее о направлении</a>
                             </div>
-                        </div>
-                    </details>
-                    <details class="service-item">
-                        <summary><span class="service-number">/03</span><h3>Маркировка и учёт</h3><span class="service-toggle" aria-hidden="true">+</span></summary>
-                        <div class="service-body">
-                            <p>Связываем «Честный знак» и «Меркурий» с учётной системой. Помогаем выстроить прослеживаемость в оптовом звене и на пищевом производстве.</p>
-                            <div>
+                            <figure class="service-visual">
+                                <img src="assets/images/projects/smagent/kpi-tablet-mockup.png" width="1536" height="1024" loading="lazy" decoding="async" alt="Экран KPI приложения SmAgent на планшете">
+                            </figure>
+                        </article>
+                        <article class="service-pane" id="pane-marking" role="tabpanel" aria-labelledby="tab-marking">
+                            <div class="service-copy">
+                                <p class="service-number">/03</p>
+                                <h3>Маркировка и учёт</h3>
+                                <p>Связываем «Честный знак» и «Меркурий» с учётной системой. Помогаем выстроить прослеживаемость в оптовом звене и на пищевом производстве.</p>
                                 <span class="service-meta">Честный знак / ВетИС / 1С</span>
-                                <a class="text-link" href="services/marking/">Подробнее о направлении</a>
+                                <div class="service-price"><strong>Индивидуальная оценка</strong><span>По товарным группам и вашей учётной системе</span></div>
+                                <a class="text-link" href="services/marking/index.html">Подробнее о направлении</a>
                             </div>
-                        </div>
-                    </details>
-                    <details class="service-item">
-                        <summary><span class="service-number">/04</span><h3>Поддержка и развитие</h3><span class="service-toggle" aria-hidden="true">+</span></summary>
-                        <div class="service-body">
-                            <p>Обновления, права, обмены и новые рабочие сценарии. Поддерживаем системы после запуска и помогаем им меняться вместе с бизнесом.</p>
-                            <div>
+                            <figure class="service-visual">
+                                <img src="assets/images/services/marking_1с.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Автоматизация учёта: схемы модулей и рабочий экран на ноутбуке">
+                            </figure>
+                        </article>
+                        <article class="service-pane" id="pane-support" role="tabpanel" aria-labelledby="tab-support">
+                            <div class="service-copy">
+                                <p class="service-number">/04</p>
+                                <h3>Поддержка и развитие</h3>
+                                <p>Обновления, права, обмены и новые рабочие сценарии. Поддерживаем системы после запуска и помогаем им меняться вместе с бизнесом.</p>
                                 <span class="service-meta">Сопровождение / доработка / интеграции</span>
-                                <a class="text-link" href="services/#support">Подробнее о направлении</a>
+                                <div class="service-price"><strong>Базовый пакет — 30 000 ₽ / месяц</strong><span>Состав сопровождения и условия — в прайсе</span></div>
+                                <a class="text-link" href="services/index.html#support">Подробнее о направлении</a>
                             </div>
-                        </div>
-                    </details>
+                            <figure class="service-visual">
+                                <img src="assets/images/services/infrastructure.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Серверная инфраструктура с организованными соединениями">
+                            </figure>
+                        </article>
+                    </div>
                 </div>
             </section>
 
@@ -176,27 +201,27 @@
                             <h3>SmAgent</h3>
                             <p>Маршруты, заявки и задачи торговых представителей — в мобильном приложении.</p>
                             <p class="product-detail">Android и iOS. Планирование визитов, анкеты и контроль работы команды для супервайзера.</p>
-                            <a class="text-link" href="projects/smagent/">О SmAgent</a>
+                            <a class="text-link" href="projects/smagent/index.html">О SmAgent</a>
                         </div>
-                        <a class="product-preview" href="projects/smagent/" aria-label="Посмотреть возможности SmAgent"><img src="assets/images/projects/smagent/catalog.jpg" width="1920" height="1084" loading="lazy" decoding="async" alt="Каталог SmAgent на планшете: товары, цены и остатки"></a>
+                        <a class="product-preview" href="projects/smagent/index.html" aria-label="Посмотреть возможности SmAgent"><img src="assets/images/projects/smagent/catalog.jpg" width="1920" height="1084" loading="lazy" decoding="async" alt="Каталог SmAgent на планшете: товары, цены и остатки"></a>
                     </article>
                     <article class="product-card">
                         <div class="product-copy">
                             <h3>Маркетинг в 1С</h3>
                             <p>Маркетинговые бюджеты, скидки и бонусы в расширении для «1С:Управление торговлей».</p>
                             <p class="product-detail">Контроль бюджета по поставщикам и периодам на всей цепочке дистрибуции.</p>
-                            <a class="text-link" href="projects/marketing/">О модуле</a>
+                            <a class="text-link" href="projects/marketing/index.html">О модуле</a>
                         </div>
-                        <a class="product-preview" href="projects/marketing/" aria-label="Посмотреть возможности маркетинга в 1С"><img src="assets/images/projects/555.png" width="1721" height="669" loading="lazy" decoding="async" alt="Условия и бонусы акции в модуле маркетинга 1С"></a>
+                        <a class="product-preview" href="projects/marketing/index.html" aria-label="Посмотреть возможности маркетинга в 1С"><img src="assets/images/projects/555.png" width="1721" height="669" loading="lazy" decoding="async" alt="Условия и бонусы акции в модуле маркетинга 1С"></a>
                     </article>
                 </div>
                 <p class="project-note">Состав решения и внедрение обсуждаем под вашу задачу.</p>
             </section>
 
             <section class="section container process" aria-labelledby="process-title">
-                <p class="eyebrow section-label">Процесс</p>
-                <div>
-                    <h2 id="process-title">Вы в процессе.<br><span class="muted">Мы на связи.</span></h2>
+                <div class="process-copy">
+                    <p class="eyebrow section-label">Процесс</p>
+                    <h2 id="process-title">От задачи<br><span class="muted">до работающего решения.</span></h2>
                     <div class="process-list">
                         <article>
                             <span class="eyebrow">{ 01 }</span>
@@ -209,7 +234,7 @@
                             <span class="eyebrow">{ 02 }</span>
                             <div>
                                 <h3>Договариваемся о решении</h3>
-                                <p>Фиксируем объём, приоритеты и этапы. Объясняем выбор технологий и подход к реализации.</p>
+                                <p>Согласуем объём, этапы и стоимость. Фиксируем, какой результат вы получите и как будем его проверять.</p>
                             </div>
                         </article>
                         <article>
@@ -230,6 +255,79 @@
                 </div>
             </section>
 
+            <section class="section container trust-section" aria-labelledby="trust-title">
+                <div class="section-heading">
+                    <div><p class="eyebrow">{ Вместе }</p><h2 id="trust-title">Клиенты<br><span class="muted">и партнёры.</span></h2></div>
+                    <p class="trust-note">Компании, с которыми мы работаем.</p>
+                </div>
+                <div class="partner-grid" aria-label="Клиенты и партнёры">
+                    <figure class="partner-logo"><div class="partner-icon"><img src="assets/images/partners/uniland-clear.png" alt="" loading="lazy" decoding="async"></div><figcaption>Юнилэнд</figcaption></figure>
+                    <figure class="partner-logo"><div class="partner-icon"><img src="assets/images/partners/confectionery-court.png" alt="" loading="lazy" decoding="async"></div><figcaption>Конфетный двор</figcaption></figure>
+                    <figure class="partner-logo"><div class="partner-icon"><img src="assets/images/partners/smaily-clear.png" alt="" loading="lazy" decoding="async"></div><figcaption>Смайли</figcaption></figure>
+                    <figure class="partner-logo"><div class="partner-icon"><img src="assets/images/partners/cherry-bakery-clear.png" alt="" loading="lazy" decoding="async"></div><figcaption>На Вишнёвой — частная пекарня</figcaption></figure>
+                    <figure class="partner-logo"><div class="partner-icon"><img src="assets/images/partners/brusnika-clear.png" alt="" loading="lazy" decoding="async"></div><figcaption>Брусника Маркет</figcaption></figure>
+                    <figure class="partner-logo"><div class="partner-icon"><img src="assets/images/partners/family-traditions-clear.png" alt="" loading="lazy" decoding="async"></div><figcaption>Семейные традиции</figcaption></figure>
+                    <figure class="partner-logo"><div class="partner-icon"><img src="assets/images/partners/golitsin-clear.png" alt="" loading="lazy" decoding="async"></div><figcaption>Голицин</figcaption></figure>
+                </div>
+            </section>
+
+            <section class="section container testimonials-section" aria-labelledby="testimonials-title">
+                <div class="section-heading">
+                    <div><p class="eyebrow">{ Обратная связь }</p><h2 id="testimonials-title">О работе<br><span class="muted">с нами.</span></h2></div>
+                </div>
+                <div class="testimonial-carousel" role="region" aria-roledescription="карусель" aria-label="Макеты отзывов клиентов">
+                    <div class="testimonial-track" id="testimonial-track" tabindex="0" aria-label="Карточки отзывов; используйте клавиши влево и вправо">
+                        <article class="testimonial-card" role="group" aria-roledescription="слайд" aria-label="1 из 7 — Юнилэнд">
+                            <div class="testimonial-company"><div class="partner-icon"><img src="assets/images/partners/uniland-clear.png" alt="" loading="lazy" decoding="async"></div><strong>Юнилэнд</strong></div>
+                            <p class="testimonial-placeholder">Здесь будет отзыв о нашей совместной работе.</p>
+                            <div class="testimonial-author"><strong>Имя автора</strong><span>Должность</span></div>
+                            <span class="testimonial-status">Макет · ожидаем согласованный отзыв</span>
+                        </article>
+                        <article class="testimonial-card" role="group" aria-roledescription="слайд" aria-label="2 из 7 — Конфетный двор">
+                            <div class="testimonial-company"><div class="partner-icon"><img src="assets/images/partners/confectionery-court.png" alt="" loading="lazy" decoding="async"></div><strong>Конфетный двор</strong></div>
+                            <p class="testimonial-placeholder">Здесь будет отзыв о нашей совместной работе.</p>
+                            <div class="testimonial-author"><strong>Имя автора</strong><span>Должность</span></div>
+                            <span class="testimonial-status">Макет · ожидаем согласованный отзыв</span>
+                        </article>
+                        <article class="testimonial-card" role="group" aria-roledescription="слайд" aria-label="3 из 7 — Смайли">
+                            <div class="testimonial-company"><div class="partner-icon"><img src="assets/images/partners/smaily-clear.png" alt="" loading="lazy" decoding="async"></div><strong>Смайли</strong></div>
+                            <p class="testimonial-placeholder">Здесь будет отзыв о нашей совместной работе.</p>
+                            <div class="testimonial-author"><strong>Имя автора</strong><span>Должность</span></div>
+                            <span class="testimonial-status">Макет · ожидаем согласованный отзыв</span>
+                        </article>
+                        <article class="testimonial-card" role="group" aria-roledescription="слайд" aria-label="4 из 7 — На Вишнёвой">
+                            <div class="testimonial-company"><div class="partner-icon"><img src="assets/images/partners/cherry-bakery-clear.png" alt="" loading="lazy" decoding="async"></div><strong>На Вишнёвой</strong></div>
+                            <p class="testimonial-placeholder">Здесь будет отзыв о нашей совместной работе.</p>
+                            <div class="testimonial-author"><strong>Имя автора</strong><span>Должность</span></div>
+                            <span class="testimonial-status">Макет · ожидаем согласованный отзыв</span>
+                        </article>
+                        <article class="testimonial-card" role="group" aria-roledescription="слайд" aria-label="5 из 7 — Брусника Маркет">
+                            <div class="testimonial-company"><div class="partner-icon"><img src="assets/images/partners/brusnika-clear.png" alt="" loading="lazy" decoding="async"></div><strong>Брусника Маркет</strong></div>
+                            <p class="testimonial-placeholder">Здесь будет отзыв о нашей совместной работе.</p>
+                            <div class="testimonial-author"><strong>Имя автора</strong><span>Должность</span></div>
+                            <span class="testimonial-status">Макет · ожидаем согласованный отзыв</span>
+                        </article>
+                        <article class="testimonial-card" role="group" aria-roledescription="слайд" aria-label="6 из 7 — Семейные традиции">
+                            <div class="testimonial-company"><div class="partner-icon"><img src="assets/images/partners/family-traditions-clear.png" alt="" loading="lazy" decoding="async"></div><strong>Семейные традиции</strong></div>
+                            <p class="testimonial-placeholder">Здесь будет отзыв о нашей совместной работе.</p>
+                            <div class="testimonial-author"><strong>Имя автора</strong><span>Должность</span></div>
+                            <span class="testimonial-status">Макет · ожидаем согласованный отзыв</span>
+                        </article>
+                        <article class="testimonial-card" role="group" aria-roledescription="слайд" aria-label="7 из 7 — Голицин">
+                            <div class="testimonial-company"><div class="partner-icon"><img src="assets/images/partners/golitsin-clear.png" alt="" loading="lazy" decoding="async"></div><strong>Голицин</strong></div>
+                            <p class="testimonial-placeholder">Здесь будет отзыв о нашей совместной работе.</p>
+                            <div class="testimonial-author"><strong>Имя автора</strong><span>Должность</span></div>
+                            <span class="testimonial-status">Макет · ожидаем согласованный отзыв</span>
+                        </article>
+                    </div>
+                    <div class="testimonial-controls">
+                        <button class="testimonial-prev" type="button" aria-label="Предыдущий отзыв" aria-controls="testimonial-track"><span aria-hidden="true">←</span></button>
+                        <span class="testimonial-counter" aria-live="polite" aria-atomic="true">1 / 7</span>
+                        <button class="testimonial-next" type="button" aria-label="Следующий отзыв" aria-controls="testimonial-track"><span aria-hidden="true">→</span></button>
+                    </div>
+                </div>
+            </section>
+
             <section class="contact-section" id="contact" aria-labelledby="contact-title">
                 <div class="contact-map" aria-hidden="true">
                     <div class="map-cursor"><div class="map-glow"></div><div class="map-crosshair"></div></div>
@@ -243,7 +341,7 @@
                         <div class="contact-direct">
                             <a href="tel:+73433761555">+7 (343) 376-15-55, доб. 670</a>
                             <address>620078, Екатеринбург<br>Библиотечная, 50, офис 218</address>
-                            <a class="text-link" href="contacts/">Карта и реквизиты</a>
+                            <a class="text-link" href="contacts/index.html">Карта и реквизиты</a>
                         </div>
                     </div>
                     <form class="contact-form" action="mailto:info@aldanteh.ru" method="post" enctype="text/plain">
@@ -253,14 +351,14 @@
                         </label>
                         <label>
                             Почта для связи
-                            <input name="email" type="email" autocomplete="email" placeholder="you@company.ru" required maxlength="200">
+                            <input name="email" type="email" autocomplete="email" placeholder="name@company.ru" required maxlength="200">
                         </label>
                         <label>
                             Что нужно сделать?
                             <textarea name="message" rows="3" placeholder="Пара слов о задаче" required maxlength="4000"></textarea>
                         </label>
-                        <button class="button button-dark" type="submit">Перейти к письму</button>
-                        <p class="form-note">Откроется ваша почтовая программа с готовым письмом. Отправку вы подтверждаете сами.</p>
+                        <button class="button button-dark" type="submit" aria-describedby="contact-form-note">Перейти к письму</button>
+                        <p class="form-note" id="contact-form-note">Откроется ваша почтовая программа с готовым письмом. Отправку вы подтверждаете сами.</p>
                         <p class="form-status" role="status"></p>
                     </form>
                 </div>
@@ -269,7 +367,7 @@
         <footer class="site-footer container">
             <div class="footer-layout">
                 <div class="footer-identity">
-                    <a class="brand" href="./" aria-label="Алдан ТЕХ — главная"><img src="assets/images/logo.png" width="28" height="28" alt="">Алдан <strong>ТЕХ</strong></a>
+                    <a class="brand" href="index.html" aria-label="Алдан ТЕХ — главная"><img src="assets/images/logo.png" width="28" height="28" alt="">Алдан <strong>ТЕХ</strong></a>
                     <p class="footer-requisites">ИНН 6670527844 · КПП 667001001<br>ОГРН 1256600003032</p>
                     <small>© <span data-year>2026</span></small>
                 </div>
@@ -277,8 +375,8 @@
                 <div class="footer-links">
                     <a href="mailto:info@aldanteh.ru">info@aldanteh.ru</a>
                     <a href="tel:+73433761555">+7 (343) 376-15-55, доб. 670</a>
-                    <a href="contacts/#requisites">Контакты и реквизиты</a>
-                    <a class="footer-up" href="#main">Наверх</a>
+                    <a href="contacts/index.html#requisites">Контакты и реквизиты</a>
+                    <a class="footer-up" href="index.html#main">Наверх</a>
                 </div>
             </div>
         </footer>

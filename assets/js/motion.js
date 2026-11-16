@@ -128,7 +128,7 @@
         if (document.hidden) [...stopScrambles].forEach(stop => stop());
     });
 
-    const revealElements = [...document.querySelectorAll('.section-heading, .project-card, .process-list article')];
+    const revealElements = [...document.querySelectorAll('.section-heading, .product-card, .product-heading, .process-list article, .intro-copy, .intro-visual, .process-copy, .process-visual, .direction-row, .split-section, .step-grid article, .contact-copy, .contact-form')];
     if ('IntersectionObserver' in window) {
         const observer = new IntersectionObserver(entries => {
             entries.forEach(entry => {
@@ -142,5 +142,89 @@
             element.classList.add('reveal-pending');
             observer.observe(element);
         });
+    }
+
+    const stage = document.querySelector('.service-stage');
+    const picker = stage?.querySelector('.service-picker');
+    const indicator = picker?.querySelector('.tab-indicator');
+    const tabs = picker ? [...picker.querySelectorAll('[role="tab"]')] : [];
+    if (stage && picker && indicator && tabs.length) {
+        // Критически затухающая пружина, response 0.4 с: индикатор догоняет вкладку без скачка.
+        const omega = 2 * Math.PI / 0.4;
+        const axes = { x: { value: 0, target: 0, velocity: 0 }, y: { value: 0, target: 0, velocity: 0 } };
+        let frame = 0;
+        let previous = 0;
+        let ready = false;
+        const paint = () => {
+            indicator.style.transform = `translate3d(${axes.x.value.toFixed(2)}px, ${axes.y.value.toFixed(2)}px, 0)`;
+        };
+        const snap = () => {
+            if (frame) cancelAnimationFrame(frame);
+            frame = 0;
+            previous = 0;
+            Object.values(axes).forEach(axis => { axis.value = axis.target; axis.velocity = 0; });
+            paint();
+        };
+        const advance = timestamp => {
+            const dt = previous ? Math.min((timestamp - previous) / 1000, 0.05) : 1 / 60;
+            previous = timestamp;
+            let moving = false;
+            Object.values(axes).forEach(axis => {
+                const delta = axis.value - axis.target;
+                const coefficient = axis.velocity + omega * delta;
+                const decay = Math.exp(-omega * dt);
+                axis.value = axis.target + (delta + coefficient * dt) * decay;
+                axis.velocity = (axis.velocity - omega * coefficient * dt) * decay;
+                if (Math.abs(axis.value - axis.target) > 0.05 || Math.abs(axis.velocity) > 0.1) moving = true;
+            });
+            paint();
+            frame = moving ? requestAnimationFrame(advance) : 0;
+            if (!moving) snap();
+        };
+        const measure = immediate => {
+            const selected = picker.querySelector('[aria-selected="true"]');
+            if (!selected?.offsetWidth) return;
+            const origin = getComputedStyle(indicator);
+            axes.x.target = selected.offsetLeft - parseFloat(origin.left);
+            axes.y.target = selected.offsetTop - parseFloat(origin.top);
+            indicator.style.width = `${selected.offsetWidth}px`;
+            indicator.style.height = `${selected.offsetHeight}px`;
+            if (!ready || immediate || reducedMotion.matches || document.hidden) snap();
+            else if (!frame) {
+                previous = 0;
+                frame = requestAnimationFrame(advance);
+            }
+            ready = true;
+            picker.classList.add('indicator-ready');
+        };
+        const select = (tab, keyboard) => {
+            tabs.forEach(item => {
+                const on = item === tab;
+                item.setAttribute('aria-selected', String(on));
+                item.tabIndex = on ? 0 : -1;
+                document.getElementById(item.getAttribute('aria-controls'))?.classList.toggle('is-active', on);
+            });
+            if (keyboard) tab.focus();
+            measure(keyboard && reducedMotion.matches);
+        };
+        stage.classList.add('is-ready');
+        tabs.forEach((tab, index) => {
+            tab.addEventListener('click', () => select(tab, false));
+            tab.addEventListener('keydown', event => {
+                const next = { ArrowRight: 1, ArrowDown: 1, ArrowLeft: -1, ArrowUp: -1 }[event.key];
+                if (event.key === 'Home' || event.key === 'End') {
+                    event.preventDefault();
+                    select(tabs[event.key === 'Home' ? 0 : tabs.length - 1], true);
+                } else if (next) {
+                    event.preventDefault();
+                    select(tabs[(index + next + tabs.length) % tabs.length], true);
+                }
+            });
+        });
+        if ('ResizeObserver' in window) new ResizeObserver(() => measure(true)).observe(picker);
+        else addEventListener('resize', () => measure(true));
+        reducedMotion.addEventListener('change', () => measure(true));
+        document.fonts?.ready.then(() => measure(true));
+        measure(true);
     }
 })();
