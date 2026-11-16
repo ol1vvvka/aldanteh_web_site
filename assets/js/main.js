@@ -1,5 +1,17 @@
 (() => {
     const root = document.documentElement;
+    const productNav = document.querySelector('.product-nav');
+    const siteHeader = document.querySelector('.site-header');
+    if (productNav && siteHeader) {
+        const updateProductOffsets = () => {
+            root.style.setProperty('--product-header-height', `${siteHeader.getBoundingClientRect().height}px`);
+            root.style.setProperty('--product-nav-height', `${productNav.getBoundingClientRect().height}px`);
+        };
+        const productResize = new ResizeObserver(updateProductOffsets);
+        productResize.observe(siteHeader);
+        productResize.observe(productNav);
+        updateProductOffsets();
+    }
     const themeButton = document.querySelector('.theme-toggle');
     const systemTheme = matchMedia('(prefers-color-scheme: dark)');
     let hasManualTheme = false;

@@ -251,3 +251,30 @@
         measure(true);
     }
 })();
+
+(() => {
+    const group = document.querySelector('.partner-grid');
+    if (!group) return;
+    const viewport = document.createElement('div');
+    viewport.className = 'partner-marquee';
+    const belt = document.createElement('div');
+    belt.className = 'partner-belt';
+    group.before(viewport);
+    viewport.append(belt);
+    belt.append(group);
+    const copy = group.cloneNode(true);
+    copy.setAttribute('aria-hidden', 'true');
+    copy.inert = true;
+    belt.append(copy);
+    const pause = document.createElement('button');
+    pause.type = 'button';
+    pause.className = 'partner-pause text-link';
+    pause.textContent = 'Приостановить движение';
+    pause.setAttribute('aria-pressed', 'false');
+    viewport.after(pause);
+    pause.addEventListener('click', () => {
+        const paused = viewport.classList.toggle('is-paused');
+        pause.setAttribute('aria-pressed', String(paused));
+        pause.textContent = paused ? 'Продолжить движение' : 'Приостановить движение';
+    });
+})();
