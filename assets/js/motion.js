@@ -255,8 +255,12 @@
 (() => {
     const group = document.querySelector('.partner-grid');
     if (!group) return;
+    const reduced = matchMedia('(prefers-reduced-motion: reduce)');
     const viewport = document.createElement('div');
     viewport.className = 'partner-marquee';
+    viewport.setAttribute('tabindex', '0');
+    viewport.setAttribute('role', 'region');
+    viewport.setAttribute('aria-label', 'Лента клиентов и партнёров; прокручивайте пальцем, курсором или колёсиком');
     const belt = document.createElement('div');
     belt.className = 'partner-belt';
     group.before(viewport);
@@ -272,9 +276,91 @@
     pause.textContent = 'Приостановить движение';
     pause.setAttribute('aria-pressed', 'false');
     viewport.after(pause);
+
+    let paused = false;
+    let dragging = false;
+    let pointerId = null;
+    let startX = 0;
+    let startScroll = 0;
+    let lastTs = 0;
+    let resumeTimer = 0;
+    const speed = 36;
+
+    function loopWidth() {
+        return group.offsetWidth;
+    }
+
+    function wrapScroll() {
+        const width = loopWidth();
+        if (!width) return;
+        while (viewport.scrollLeft >= width) viewport.scrollLeft -= width;
+        while (viewport.scrollLeft < 0) viewport.scrollLeft += width;
+    }
+
+    function holdAuto(ms = 1800) {
+        viewport.classList.add('is-paused');
+        clearTimeout(resumeTimer);
+        if (paused) return;
+        resumeTimer = window.setTimeout(() => {
+            if (!dragging && !paused) viewport.classList.remove('is-paused');
+        }, ms);
+    }
+
+    function tick(ts) {
+        if (!lastTs) lastTs = ts;
+        const dt = Math.min(32, ts - lastTs) / 1000;
+        lastTs = ts;
+        if (!reduced.matches && !paused && !dragging && !viewport.classList.contains('is-paused')) {
+            viewport.scrollLeft += speed * dt;
+            wrapScroll();
+        }
+        requestAnimationFrame(tick);
+    }
+
     pause.addEventListener('click', () => {
-        const paused = viewport.classList.toggle('is-paused');
+        paused = viewport.classList.toggle('is-paused');
         pause.setAttribute('aria-pressed', String(paused));
         pause.textContent = paused ? 'Продолжить движение' : 'Приостановить движение';
+        if (!paused) clearTimeout(resumeTimer);
     });
+
+    viewport.addEventListener('pointerdown', event => {
+        if (event.button !== 0 && event.pointerType === 'mouse') return;
+        dragging = true;
+        pointerId = event.pointerId;
+        startX = event.clientX;
+        startScroll = viewport.scrollLeft;
+        viewport.classList.add('is-dragging');
+        holdAuto();
+        viewport.setPointerCapture(pointerId);
+    });
+    viewport.addEventListener('pointermove', event => {
+        if (!dragging || event.pointerId !== pointerId) return;
+        viewport.scrollLeft = startScroll - (event.clientX - startX);
+        wrapScroll();
+        startX = event.clientX;
+        startScroll = viewport.scrollLeft;
+    });
+    const endDrag = event => {
+        if (!dragging || (event && event.pointerId !== pointerId)) return;
+        dragging = false;
+        pointerId = null;
+        viewport.classList.remove('is-dragging');
+        holdAuto();
+    };
+    viewport.addEventListener('pointerup', endDrag);
+    viewport.addEventListener('pointercancel', endDrag);
+    viewport.addEventListener('wheel', event => {
+        if (Math.abs(event.deltaY) > Math.abs(event.deltaX)) {
+            viewport.scrollLeft += event.deltaY;
+            event.preventDefault();
+            wrapScroll();
+        }
+        holdAuto();
+    }, { passive: false });
+    viewport.addEventListener('scroll', () => {
+        if (!dragging) wrapScroll();
+    }, { passive: true });
+
+    if (!reduced.matches) requestAnimationFrame(tick);
 })();
