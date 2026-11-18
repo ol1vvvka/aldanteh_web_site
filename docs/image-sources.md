@@ -1,5 +1,6 @@
 # Источники новых фотографий
 
+- Логотип Голицина / Wishcon: https://wishcon.ru/assets/images/logo-new.png (локальная копия `assets/images/partners/golitsin-clear.png`, фон вне круга сделан прозрачным).
 - Разработка: Nubelson Fernandes — https://unsplash.com/photos/UcYBL5V0xWQ (заменён экран).
 - Поддержка: Bruno Guerrero — https://unsplash.com/photos/hP0yzStvp-M.
 - SmAgent: Jakub Żerdzicki — https://unsplash.com/photos/SE3hxMBkOCs (добавлены заставки).
