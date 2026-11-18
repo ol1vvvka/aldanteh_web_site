@@ -8,6 +8,7 @@
         uniform vec2 u_resolution;
         uniform float u_time;
         uniform float u_dark;
+        uniform float u_aspect;
         uniform vec2 u_pointer;
 
         vec2 flow(vec2 p, float t) {
@@ -17,14 +18,18 @@
             ) * 0.22;
         }
         void main() {
-            vec2 uv = (gl_FragCoord.xy * 2.0 - u_resolution) / min(u_resolution.x, u_resolution.y);
+            vec2 uv = (gl_FragCoord.xy * 2.0 - u_resolution) / u_resolution.y;
+            float wide = smoothstep(1.08, 1.55, u_aspect);
+            float squeeze = mix(1.0, 0.5, wide);
+            vec2 st = vec2(uv.x * squeeze, uv.y);
             float t = u_time * 0.18;
-            vec2 p = uv + flow(uv, t);
+            vec2 p = st + flow(st, t);
             vec2 q = p + flow(p * 1.4, -t * 0.65) * 0.55;
-            float r = length(uv);
-            float angle = atan(uv.y, uv.x);
-            float edge = 0.64 + sin(angle * 3.0 + t * 0.55) * 0.08
-                       + sin(angle * 5.0 - t * 0.4) * 0.045;
+            float r = length(st);
+            float angle = atan(st.y, st.x);
+            float edge = mix(0.64, 0.96, wide) + sin(angle * 3.0 + t * 0.55) * 0.09
+                       + sin(angle * 5.0 - t * 0.4) * 0.05
+                       + sin(angle * 2.0 + t * 0.25) * 0.04 * wide;
             float cloud = 1.0 - smoothstep(edge - 0.16, edge + 0.24, r);
             float field = sin(q.x * 3.4 + q.y * 2.3 + t * 0.3)
                         + cos(q.y * 3.7 - q.x * 1.8 - t * 0.4);
@@ -37,7 +42,7 @@
             vec3 color = mix(deep, blue, luminous);
             color = mix(color, cyan, overlap * 0.40);
             float density = 0.48 + luminous * 0.17;
-            float boundaryFade = 1.0 - smoothstep(0.55, 0.82, length(uv));
+            float boundaryFade = 1.0 - smoothstep(mix(0.55, 0.8, wide), mix(0.82, 1.12, wide), length(st));
             gl_FragColor = vec4(color, cloud * density * boundaryFade);
         }
     `;
@@ -84,7 +89,7 @@
         const position = gl.getAttribLocation(program, 'a_position');
         gl.enableVertexAttribArray(position);
         gl.vertexAttribPointer(position, 2, gl.FLOAT, false, 0, 0);
-        const uniforms = Object.fromEntries(['resolution', 'time', 'dark', 'pointer'].map(name => [name, gl.getUniformLocation(program, `u_${name}`)]));
+        const uniforms = Object.fromEntries(['resolution', 'time', 'dark', 'pointer', 'aspect'].map(name => [name, gl.getUniformLocation(program, `u_${name}`)]));
         const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
         const finePointer = matchMedia('(pointer: fine)');
         const art = object.closest('.hero-art');
@@ -125,13 +130,18 @@
             gl.uniform2f(uniforms.resolution, canvas.width, canvas.height);
             gl.uniform1f(uniforms.time, animationTime);
             gl.uniform1f(uniforms.dark, document.documentElement.dataset.theme === 'dark' ? 1 : 0);
+            gl.uniform1f(uniforms.aspect, canvas.width / Math.max(1, canvas.height));
             gl.uniform2f(uniforms.pointer, pointer.x, pointer.y);
             gl.drawArrays(gl.TRIANGLES, 0, 3);
         }
         function resize() {
-            const resolution = Math.round(Math.min(object.clientWidth, 520) * Math.min(devicePixelRatio || 1, 1.25));
-            canvas.width = Math.max(1, resolution);
-            canvas.height = Math.max(1, resolution);
+            const cssWidth = Math.max(1, object.clientWidth);
+            const cssHeight = Math.max(1, object.clientHeight);
+            const scale = Math.min(devicePixelRatio || 1, 1.25);
+            const aspect = cssWidth / cssHeight;
+            const bufferW = Math.round(Math.min(cssWidth, aspect >= 1 ? 720 : 520) * scale);
+            canvas.width = Math.max(1, bufferW);
+            canvas.height = Math.max(1, Math.round(bufferW / aspect));
             gl.viewport(0, 0, canvas.width, canvas.height);
             measureNotes();
             updateNotes(0);
